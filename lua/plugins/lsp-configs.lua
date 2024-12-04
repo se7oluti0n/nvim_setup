@@ -10,7 +10,7 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd" }
+        ensure_installed = { "lua_ls", "clangd", "stylua", "clang-format"}
       })
     end
   },
@@ -24,6 +24,10 @@ return {
         capabilities = capabilities
       })
       lspconfig.clangd.setup({
+        cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+        init_options = {
+          fallbackFlags = { '-std=c++17' },
+        },
         capabilities = capabilities
       })
     end
