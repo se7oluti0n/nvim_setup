@@ -10,7 +10,7 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "pylyzer", "clang-format"}
+        ensure_installed = { "lua_ls", "clangd", "pylyzer"}
     })
     end
   },
@@ -25,7 +25,12 @@ return {
       })
 
       lspconfig.clangd.setup({
-        cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+        cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose',
+                "--header-insertion=never",
+                "--function-arg-placeholders",
+                "--query-driver=/usr/bin/c++",
+                "--all-scopes-completion",
+                "--completion-style=detailed"},
         init_options = {
           fallbackFlags = { '-std=c++17' },
         },
