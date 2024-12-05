@@ -10,8 +10,8 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "pyright"}
-    })
+        ensure_installed = { "lua_ls", "clangd", "pyright" }
+      })
     end
   },
   {
@@ -25,12 +25,12 @@ return {
       })
 
       lspconfig.clangd.setup({
-        cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose',
-                "--header-insertion=never",
-                "--function-arg-placeholders",
-                "--query-driver=/usr/bin/c++",
-                "--all-scopes-completion",
-                "--completion-style=detailed"},
+        cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose',
+          "--header-insertion=never",
+          "--function-arg-placeholders",
+          "--query-driver=/usr/bin/c++",
+          "--all-scopes-completion",
+          "--completion-style=detailed" },
         init_options = {
           fallbackFlags = { '-std=c++17' },
         },
@@ -38,10 +38,19 @@ return {
       })
 
       lspconfig.pyright.setup({
-        cmd = {"pyright-langserver", "--stdio"},
-        filetypes = {"python"},
+        cmd = { "pyright-langserver", "--stdio" },
+        filetypes = { "python" },
         capabilities = capabilities
       })
+
+      local map = vim.keymap.set
+      map("n", "K", vim.lsp.buf.hover, {})
+      map("n", "gD", vim.lsp.buf.declaration, {})
+      map("n", "gd", vim.lsp.buf.definition, {})
+      map("n", "gi", vim.lsp.buf.implementation, {})
+      map("n", "<leader>D", vim.lsp.buf.type_definition, {})
+      map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+      map("n", "gr", vim.lsp.buf.references, {})
     end
   }
 }
