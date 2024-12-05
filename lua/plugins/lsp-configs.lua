@@ -10,7 +10,7 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "pylyzer"}
+        ensure_installed = { "lua_ls", "clangd", "pyright"}
     })
     end
   },
@@ -37,7 +37,9 @@ return {
         capabilities = capabilities
       })
 
-      lspconfig.pylyzer.setup({
+      lspconfig.pyright.setup({
+        cmd = {"pyright-langserver", "--stdio"},
+        filetypes = {"python"},
         capabilities = capabilities
       })
     end
