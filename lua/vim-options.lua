@@ -7,4 +7,9 @@ vim.cmd("set shiftwidth=2")
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
--- vim.keymap.set('v', '<leader>s(', ":xi()", {})
+
+local map = vim.keymap.set
+
+map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
+map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
