@@ -17,7 +17,6 @@ return
       map('n', '<leader>fg', builtin.live_grep, {})
       map('n', '<leader>fs', builtin.lsp_document_symbols, {})
       map('n', '<leader>fb', builtin.buffers, {})
-      map('n', '<leader>fh', builtin.help_tags, {})
 
       map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
       map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })

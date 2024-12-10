@@ -45,6 +45,7 @@ return {
 
       local map = vim.keymap.set
       map("n", "K", vim.lsp.buf.hover, {})
+      map("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", {})
       map("n", "gD", vim.lsp.buf.declaration, {})
       map("n", "gd", vim.lsp.buf.definition, {})
       map("n", "gi", vim.lsp.buf.implementation, {})
