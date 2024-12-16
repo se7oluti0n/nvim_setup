@@ -1,14 +1,23 @@
 return
 {
   {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+  },
+  {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require("telescope").setup({ file_ignore_patterns = { "./build/*", "./node_modules/*" } })
+      require('telescope').load_extension('fzf')
       local builtin = require("telescope.builtin")
       local utils = require("telescope.utils")
       local map = vim.keymap.set
       map('n', '<C-p>', builtin.find_files, {})
+      map('n', '<C-P>',
+        function()
+          builtin.find_files({ search_dirs = {"~/.config/nvim"} })
+        end, {desc = "find nvim configuration"})
       map('n', '<leader>ff',
         function()
           builtin.find_files({ cwd = utils.buffer_dir() })
@@ -62,5 +71,6 @@ return
       }
       require("telescope").load_extension("ui-select")
     end
-  }
+  },
+
 }
