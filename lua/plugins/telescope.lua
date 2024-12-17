@@ -14,7 +14,7 @@ return
       local utils = require("telescope.utils")
       local map = vim.keymap.set
       map('n', '<C-p>', builtin.find_files, {})
-      map('n', '<C-P>',
+      map('n', '<leader>fp',
         function()
           builtin.find_files({ search_dirs = {"~/.config/nvim"} })
         end, {desc = "find nvim configuration"})
@@ -60,13 +60,13 @@ return
             ".build",
             ".cache"
           },
-          mappings = {
-            i = {
-              ["<cr>"] = function(bufnr)
-                require("telescope.actions.set").edit(bufnr, "tab drop")
-              end
-            }
-          }
+          -- mappings = {
+          --   i = {
+          --     ["<cr>"] = function(bufnr)
+          --       require("telescope.actions.set").edit(bufnr, "tab drop")
+          --     end
+          --   }
+          -- }
         }
       }
       require("telescope").load_extension("ui-select")
