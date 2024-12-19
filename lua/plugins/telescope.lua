@@ -32,9 +32,6 @@ return
       map('n', '<leader>fs', builtin.lsp_document_symbols, {})
       map('n', '<leader>fS', builtin.lsp_workspace_symbols, {})
       map('n', '<leader>fb', builtin.buffers, {})
-      map('n', '<leader>gd', builtin.lsp_definitions, {})
-      map('n', '<leader>gD', builtin.lsp_type_definitions, {})
-      map('n', '<leader>gi', builtin.lsp_implementations, {})
 
       map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
       map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })

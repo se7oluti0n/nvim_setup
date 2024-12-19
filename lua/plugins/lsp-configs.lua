@@ -51,7 +51,8 @@ return {
       map("n", "gi", vim.lsp.buf.implementation, {})
       map("n", "<leader>D", vim.lsp.buf.type_definition, {})
       map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-      map("n", "gr", vim.lsp.buf.references, {})
+      map("n", "gr", vim.lsp.buf.references, { noremap=true, silent=true })
+      map("n", "gR", vim.lsp.buf.rename, {})
     end
   }
 }
