@@ -9,8 +9,7 @@ sudo snap install nvim
 git clone https://github.com/se7oluti0n/nvim_setup ~/.config/nvim
 ```
 * enjoy nvim
-  ```bash
-# cd to your workspace and enjoy
+```bash
 cd [your_workspace]
 nvim
-  ```
+```
