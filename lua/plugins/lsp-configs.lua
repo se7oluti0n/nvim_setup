@@ -10,7 +10,7 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "pyright" }
+        ensure_installed = { "lua_ls", "clangd", "pyright", "qmlls" }
       })
     end
   },
@@ -43,6 +43,16 @@ return {
         capabilities = capabilities
       })
 
+      lspconfig.qmlls.setup({
+        cmd = { "/home/manh/Qt/6.8.1/gcc_64/bin/qmlls" }, -- Update this path to the qmlls binary
+        filetypes = { "qml" },
+        root_dir = require('lspconfig.util').root_pattern('.git', '*.pro', '*.pri', 'CMakeLists.txt'),
+        on_attach = function(client, bufnr)
+          -- Add custom keybindings or settings here if needed
+          print("QML LSP attached")
+        end,
+      })
+
       local map = vim.keymap.set
       map("n", "K", vim.lsp.buf.hover, {})
       map("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", {})
@@ -51,7 +61,7 @@ return {
       map("n", "gi", vim.lsp.buf.implementation, {})
       map("n", "<leader>D", vim.lsp.buf.type_definition, {})
       map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-      map("n", "gr", vim.lsp.buf.references, { noremap=true, silent=true })
+      map("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true })
       map("n", "gR", vim.lsp.buf.rename, {})
     end
   }
