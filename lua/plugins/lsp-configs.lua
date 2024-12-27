@@ -10,7 +10,7 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "pyright", "qmlls" }
+        ensure_installed = { "lua_ls", "clangd", "pyright"}
       })
     end
   },
