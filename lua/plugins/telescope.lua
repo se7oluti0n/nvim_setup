@@ -26,12 +26,19 @@ return
         { desc = "telescope find all files" })
       map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>",
         { desc = "telescope find in current buffer" })
-      map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
+      map("n", "<leader>fO", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
       map('n', '<leader>fg', builtin.live_grep, {})
 
-      map('n', '<leader>fS', builtin.lsp_document_symbols, {})
-      map('n', '<leader>fs', builtin.treesitter, {})
+      map('n', '<leader>fo', function() 
+          builtin.lsp_document_symbols({symbols = { "Class", "Function", "Method", "Constructor", "Interface" }})
+      end, {})
+
+      map('n', '<leader>fs', function() 
+          builtin.treesitter({symbols = { "Class", "Function", "Method", "Constructor", "Interface" }})
+      end, {})
+
       map('n', '<leader>fb', builtin.buffers, {})
+      map('n', '<leader>fe', builtin.diagnostics, {})
 
       map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
       map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
