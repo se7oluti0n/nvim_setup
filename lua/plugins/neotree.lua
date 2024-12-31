@@ -9,6 +9,16 @@ return {
   },
   config = function()
     require("neo-tree").setup({
+      sources = {
+        "filesystem",
+        "buffers",
+        "git_status",
+        "document_symbols", -- Add this to enable document symbols
+      },
+      source_selector = {
+        winbar = true, -- Display source selector in the window bar
+        statusline = false,
+      },
       close_if_last_window = true, -- Close Neo-tree if it is the last window,
       windows = {
         position = "left",
@@ -18,5 +28,6 @@ return {
       }
     })
     vim.keymap.set('n', '<C-b>', "<cmd>Neotree toggle<CR>", { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>ds', "<cmd>Neotree float source=document_symbols<CR>", { noremap = true, silent = true })
   end
 }
