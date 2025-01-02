@@ -8,33 +8,36 @@ return
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      require("telescope").setup({ file_ignore_patterns = { "./build/*", "./node_modules/*" } })
+      require("telescope").setup({
+        file_ignore_patterns = { "./build/*", "./node_modules/*" },
+      })
       require('telescope').load_extension('fzf')
       local builtin = require("telescope.builtin")
-      local utils = require("telescope.utils")
+      -- local utils = require("telescope.utils")
       local map = vim.keymap.set
       map('n', '<C-p>', builtin.find_files, {})
       map('n', '<leader>fp',
         function()
-          builtin.find_files({ search_dirs = {"~/.config/nvim"} })
-        end, {desc = "find nvim configuration"})
-      map('n', '<leader>ff',
-        function()
-          builtin.find_files({ cwd = utils.buffer_dir() })
-        end, {})
+          builtin.find_files({ search_dirs = { "~/.config/nvim" } })
+        end, { desc = "find nvim configuration" })
+      -- map('n', '<leader>fg',
+      --   function()
+      --     builtin.find_files({ cwd = utils.buffer_dir() })
+      --   end, {})
       map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
         { desc = "telescope find all files" })
       map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>",
         { desc = "telescope find in current buffer" })
       map("n", "<leader>fO", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
-      map('n', '<leader>fg', builtin.live_grep, {})
+      map('n', '<leader>fg', builtin.live_grep, { desc = "search for string in files as you type" })
+      map('n', '<leader>ff', builtin.grep_string, { desc = "Searches for the string under your cursor" })
 
-      map('n', '<leader>fo', function() 
-          builtin.lsp_document_symbols({symbols = { "Class", "Function", "Method", "Constructor", "Interface" }})
+      map('n', '<C-O>', function()
+        builtin.lsp_document_symbols({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
-      map('n', '<leader>fs', function() 
-          builtin.treesitter({symbols = { "Class", "Function", "Method", "Constructor", "Interface" }})
+      map('n', '<leader>fs', function()
+        builtin.treesitter({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
       map('n', '<leader>fb', builtin.buffers, {})
