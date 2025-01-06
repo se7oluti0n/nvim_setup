@@ -32,11 +32,11 @@ return
       map('n', '<leader>fg', builtin.live_grep, { desc = "search for string in files as you type" })
       map('n', '<leader>ff', builtin.grep_string, { desc = "Searches for the string under your cursor" })
 
-      map('n', '<C-O>', function()
+      map('n', '<leader>fs', function()
         builtin.lsp_document_symbols({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
-      map('n', '<leader>fs', function()
+      map('n', '<leader>fS', function()
         builtin.treesitter({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
