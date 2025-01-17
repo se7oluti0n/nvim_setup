@@ -27,3 +27,13 @@ map('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
 map('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
 map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 map('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+map('n', '<M-j>', 'ddjP', { noremap = true, silent = true })
+map('n', '<M-k>', 'ddkP', { noremap = true, silent = true })
+map('v', '<M-j>', 'djP', { noremap = true, silent = true })
+map('v', '<M-k>', 'dkP', { noremap = true, silent = true })
+function OpenTerminalInVSplit()
+  vim.cmd('vsplit')
+  vim.cmd('terminal')
+  vim.cmd('startinsert') -- Automatically enter insert mode
+end
+map('n', '<leader>`', ':lua OpenTerminalInVSplit()<CR>', { noremap = true, silent = true })

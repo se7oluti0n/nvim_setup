@@ -15,6 +15,7 @@ return {
         "git_status",
         "document_symbols", -- Add this to enable document symbols
       },
+      hijack_cursor = false,
       source_selector = {
         winbar = true, -- Display source selector in the window bar
         statusline = false,
@@ -27,7 +28,7 @@ return {
         follow_current_file = true, -- Highlight the current file
       }
     })
-    vim.keymap.set('n', '<C-b>', "<cmd>Neotree toggle<CR>", { noremap = true, silent = true })
+    vim.keymap.set('n', '`', "<cmd>Neotree toggle reveal_force_cwd<CR>", { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>ds', "<cmd>Neotree float source=document_symbols<CR>", { noremap = true, silent = true })
   end
 }
