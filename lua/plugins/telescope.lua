@@ -40,7 +40,7 @@ return
         builtin.treesitter({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
-      map('n', '<leader>fb', builtin.buffers, {})
+      map('n', '<C-b>', builtin.buffers, {})
       map('n', '<leader>fe', builtin.diagnostics, {})
 
       map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
