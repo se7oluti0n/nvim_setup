@@ -40,7 +40,7 @@ return
         builtin.treesitter({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
-      map('n', '<C-b>', builtin.buffers, {})
+      map('n', '<leader>fb', builtin.buffers, {})
       map('n', '<leader>fe', builtin.diagnostics, {})
 
       map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
@@ -67,13 +67,11 @@ return
             ".build",
             ".cache"
           },
-          -- mappings = {
-          --   i = {
-          --     ["<cr>"] = function(bufnr)
-          --       require("telescope.actions.set").edit(bufnr, "tab drop")
-          --     end
-          --   }
-          -- }
+        },
+        pickers = {
+          lsp_document_symbols = {
+            symbol_width = 50,
+          }
         }
       }
       require("telescope").load_extension("ui-select")

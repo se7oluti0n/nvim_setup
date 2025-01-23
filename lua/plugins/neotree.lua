@@ -28,7 +28,7 @@ return {
         follow_current_file = true, -- Highlight the current file
       }
     })
-    vim.keymap.set('n', '`', "<cmd>Neotree toggle reveal_force_cwd<CR>", { noremap = true, silent = true })
+    vim.keymap.set('n', '<C-b>', "<cmd>Neotree toggle reveal_force_cwd<CR>", { noremap = true, silent = true })
     vim.keymap.set('n', '<leader>ds', "<cmd>Neotree float source=document_symbols<CR>", { noremap = true, silent = true })
   end
 }
