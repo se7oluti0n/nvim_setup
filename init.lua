@@ -21,4 +21,14 @@ require("vim-options")
 -- Setup lazy.nvim
 require("lazy").setup("plugins")
 
-
+vim.api.nvim_create_autocmd("BufReadPre", {
+  pattern = "*",
+  callback = function()
+    local max_filesize = 100 * 1024 -- 100KB limit
+    local file = vim.fn.expand("<afile>")
+    if vim.fn.getfsize(file) > max_filesize then
+      print("File too large! Not opening: " .. file)
+      vim.cmd("bwipeout") -- Close the buffer immediately
+    end
+  end,
+})
