@@ -2,7 +2,7 @@
 
 * Install neovim:
 ```
-sudo snap install nvim
+sudo snap install nvim --classic
 ``` 
 * clone this repo to config folder:
 ```
