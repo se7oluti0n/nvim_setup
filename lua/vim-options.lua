@@ -5,6 +5,7 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set conceallevel=1")
 vim.cmd("set rnu")
 vim.cmd("set nu")
+vim.opt.clipboard = 'unnamedplus'
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
@@ -13,7 +14,7 @@ vim.g.maplocalleader = "\\"
 
 local map = vim.keymap.set
 
-map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
+-- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
 map("n", "<C-q>", "<cmd>q<CR>", { desc = "Quit buffer" })
 map("n", "<C-q>a", "<cmd>qa<CR>", { desc ="Quit all buffer" })
 map("n", "<C-q>A", "<cmd>qa!<CR>", { desc ="Quit all buffer no save" })
@@ -27,13 +28,16 @@ map('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
 map('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
 map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 map('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+map('n', 'gn', 'gt', { noremap = true, silent = true })
+map('n', 'gp', 'gT', { noremap = true, silent = true })
 map('n', '<M-j>', 'ddjP', { noremap = true, silent = true })
 map('n', '<M-k>', 'ddkP', { noremap = true, silent = true })
 map('v', '<M-j>', 'djP', { noremap = true, silent = true })
 map('v', '<M-k>', 'dkP', { noremap = true, silent = true })
-function OpenTerminalInVSplit()
-  vim.cmd('vsplit')
+function OpenTerminalInSplit()
+  vim.cmd('belowright split')
   vim.cmd('terminal')
-  vim.cmd('startinsert') -- Automatically enter insert mode
+  vim.cmd('resize -10')
+  -- vim.cmd('startinsert') -- Automatically enter insert mode
 end
-map('n', '<leader>`', ':lua OpenTerminalInVSplit()<CR>', { noremap = true, silent = true })
+map('n', '<leader>`', ':lua OpenTerminalInSplit()<CR>', { noremap = true, silent = true })

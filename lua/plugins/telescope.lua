@@ -37,7 +37,7 @@ return
         { desc = "telescope find all files" })
       map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>",
         { desc = "telescope find in current buffer" })
-      map("n", "<leader>fO", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
+      map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
       map('n', '<leader>fg', builtin.live_grep, { desc = "search for string in files as you type" })
       map('n', '<leader>ff', builtin.grep_string, { desc = "Searches for the string under your cursor" })
 
@@ -45,7 +45,7 @@ return
         builtin.lsp_document_symbols({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
-      map('n', '<leader>fS', function()
+      map('n', '<leader>ft', function()
         builtin.treesitter({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
