@@ -25,10 +25,15 @@ return {
       })
 
       lspconfig.clangd.setup({
-        cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose',
+        cmd = { 'clangd', '--background-index',
+          '--limit-results=30',
+          '--clang-tidy',
+          '--log=verbose',
           "--header-insertion=never",
+          "--header-insertion-decorators=0",
           "--function-arg-placeholders",
           "--query-driver=/usr/bin/c++",
+          "--pch-storage=disk",
           "--all-scopes-completion",
           "--completion-style=detailed" },
         init_options = {
