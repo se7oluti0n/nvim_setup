@@ -6,21 +6,26 @@ return
   },
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'LukasPietzschmann/telescope-tabs',
+    },
     config = function()
       require("telescope").setup({
         file_ignore_patterns = { "./build/*", "./node_modules/*" },
         extensions = {
           fzf = {
-            fuzzy = true,             -- false will only do exact matching
+            fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           }
         }
       })
       require('telescope').load_extension('fzf')
+      require('telescope').load_extension('telescope-tabs')
+
       local builtin = require("telescope.builtin")
       -- local utils = require("telescope.utils")
       local map = vim.keymap.set
@@ -45,10 +50,11 @@ return
         builtin.lsp_document_symbols({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
-      map('n', '<leader>ft', function()
+      map('n', '<leader>fS', function()
         builtin.treesitter({ symbols = { "Class", "Function", "Method", "Constructor", "Interface" } })
       end, {})
 
+      map('n', '<leader>ft', require('telescope-tabs').list_tabs, { desc = '[F]ind [T]abs' })
       map('n', '<leader>fb', builtin.buffers, {})
       map('n', '<leader>fe', builtin.diagnostics, {})
 
