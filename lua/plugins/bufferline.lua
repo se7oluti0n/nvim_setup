@@ -17,6 +17,8 @@ return {
       -- If you REALLY want to manage native tabs instead of buffers
       mode = "tabs",
 
+      --- Dianotics setting
+      diagnostics = "nvim_lsp",
       diagnostics_indicator = function(count, level)
         local icon = level:match("error") and " " or " "
         return " " .. icon .. count
@@ -26,7 +28,7 @@ return {
       numbers = function(opts)
         return string.format("%s|", opts.ordinal)
       end,
-      
+
       --- Hover on tab to close or select
       hover = {
         enabled = true,
