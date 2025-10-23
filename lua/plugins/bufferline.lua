@@ -15,15 +15,24 @@ return {
       always_show_bufferline = true,
 
       -- If you REALLY want to manage native tabs instead of buffers
-      -- mode = "tabs",
+      mode = "tabs",
+
       diagnostics_indicator = function(count, level)
         local icon = level:match("error") and " " or " "
         return " " .. icon .. count
       end,
 
+      --- Show tab number
       numbers = function(opts)
-        return string.format('%s|%s', opts.ordinal, opts.raise(opts.id))
+        return string.format("%s|", opts.ordinal)
       end,
+      
+      --- Hover on tab to close or select
+      hover = {
+        enabled = true,
+        delay = 200,
+        reveal = { 'close' }
+      }
     },
     highlights = {
       -- This is where you can make it stand out
@@ -37,6 +46,6 @@ return {
         bg = '#1e222a', -- A darker, separate background
       },
     },
-  }
+  },
 
 }
