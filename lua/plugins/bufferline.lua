@@ -12,17 +12,17 @@ return {
       separator_style = "slant",
 
       -- Shows a separator on the right side
-      always_show_bufferline = true,
+      -- always_show_bufferline = true,
 
       -- If you REALLY want to manage native tabs instead of buffers
       mode = "tabs",
 
       --- Dianotics setting
-      diagnostics = "nvim_lsp",
-      diagnostics_indicator = function(count, level)
-        local icon = level:match("error") and " " or " "
-        return " " .. icon .. count
-      end,
+      -- diagnostics = "nvim_lsp",
+      -- diagnostics_indicator = function(count, level)
+      --   local icon = level:match("error") and " " or " "
+      --   return " " .. icon .. count
+      -- end,
 
       --- Show tab number
       numbers = function(opts)
