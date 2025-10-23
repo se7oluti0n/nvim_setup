@@ -10,21 +10,21 @@ return {
 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "pyright"}
+        ensure_installed = { "lua_ls", "clangd", "pyright" }
       })
     end
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
+      -- local lspconfig = require("lspconfig")
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities
       })
 
-      lspconfig.clangd.setup({
+      vim.lsp.config("clangd", {
         cmd = { 'clangd', '--background-index',
           '--limit-results=30',
           '--clang-tidy',
@@ -42,25 +42,26 @@ return {
         capabilities = capabilities
       })
 
-      lspconfig.pyright.setup({
+      vim.lsp.config("pyright", {
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = { "python" },
         capabilities = capabilities
       })
 
-      lspconfig.qmlls.setup({
-        cmd = { "/home/manh/Qt/6.8.1/gcc_64/bin/qmlls" }, -- Update this path to the qmlls binary
-        filetypes = { "qml" },
-        root_dir = require('lspconfig.util').root_pattern('.git', '*.pro', '*.pri', 'CMakeLists.txt'),
-        on_attach = function(client, bufnr)
-          -- Add custom keybindings or settings here if needed
-          print("QML LSP attached")
-        end,
-      })
+      -- lspconfig.qmlls.setup({
+      --   cmd = { "/home/manh/Qt/6.8.1/gcc_64/bin/qmlls" }, -- Update this path to the qmlls binary
+      --   filetypes = { "qml" },
+      --   root_dir = require('lspconfig.util').root_pattern('.git', '*.pro', '*.pri', 'CMakeLists.txt'),
+      --   on_attach = function(client, bufnr)
+      --     -- Add custom keybindings or settings here if needed
+      --     print("QML LSP attached")
+      --   end,
+      -- })
 
       local map = vim.keymap.set
       map("n", "K", vim.lsp.buf.hover, {})
-      map("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", {})
+      map("n", "<M-o>", "<cmd>LspClangdSwitchSourceHeader<CR>", {})
+      -- map("n", "<M-o>", vim.lsp.config.switch_source_header, {})
       map("n", "gD", vim.lsp.buf.declaration, {})
       map("n", "gd", vim.lsp.buf.definition, {})
       map("n", "gi", vim.lsp.buf.implementation, {})
