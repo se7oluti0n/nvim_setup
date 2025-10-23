@@ -17,14 +17,14 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
+      -- local lspconfig = require("lspconfig")
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.enable("lua_ls", {
         capabilities = capabilities
       })
 
-      lspconfig.clangd.setup({
+      vim.lsp.enable("clangd", {
         cmd = { 'clangd', '--background-index',
           '--limit-results=30',
           '--clang-tidy',
@@ -42,13 +42,13 @@ return {
         capabilities = capabilities
       })
 
-      lspconfig.pyright.setup({
+      vim.lsp.enable("pyright", {
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = { "python" },
         capabilities = capabilities
       })
 
-      lspconfig.qmlls.setup({
+      vim.lsp.enable("qmlls", {
         cmd = { "/home/manh/Qt/6.8.1/gcc_64/bin/qmlls" }, -- Update this path to the qmlls binary
         filetypes = { "qml" },
         root_dir = require('lspconfig.util').root_pattern('.git', '*.pro', '*.pri', 'CMakeLists.txt'),
