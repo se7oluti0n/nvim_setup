@@ -11,6 +11,10 @@ return {
       -- Other options: "arrow", "wave", "rounded"
       separator_style = "slant",
 
+      -- Change the indicator to an underline
+      indicator = {
+        style = 'underline'
+      },
       -- Shows a separator on the right side
       -- always_show_bufferline = true,
 
@@ -26,7 +30,7 @@ return {
 
       --- Show tab number
       numbers = function(opts)
-        return string.format("%s|", opts.ordinal)
+        return string.format("%s", opts.ordinal)
       end,
 
       --- Hover on tab to close or select
@@ -40,13 +44,19 @@ return {
       -- This is where you can make it stand out
       buffer_selected = {
         fg = '#FFFFFF', -- White text
+        -- fg = '#06E5F9', -- Cyan text
         -- bg = '#51678d', -- A distinct blue background
         bold = true,
       },
       -- Make the background of the whole bar different
-      background = {
-        bg = '#1e222a', -- A darker, separate background
-      },
+      -- background = {
+      --   bg = '#1e222a', -- A darker, separate background
+      -- },
+
+      -- Set the color of the indicator for the *selected* (active) tab
+      -- indicator_selected = {
+      --   guifg = '#FF0000' -- You can use 'Red' or any hex code
+      -- }
     },
   },
 
