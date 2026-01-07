@@ -24,6 +24,7 @@ return {
         capabilities = capabilities
       })
 
+      vim.lsp.set_log_level("warn")
       vim.lsp.config("clangd", {
         cmd = { 'clangd', '--background-index',
           '--limit-results=30',

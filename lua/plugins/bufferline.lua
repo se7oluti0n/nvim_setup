@@ -43,7 +43,7 @@ return {
     highlights = {
       -- This is where you can make it stand out
       buffer_selected = {
-        fg = '#FFFFFF', -- White text
+        fg = '#FF3E00', -- White text
         -- fg = '#06E5F9', -- Cyan text
         -- bg = '#51678d', -- A distinct blue background
         bold = true,
