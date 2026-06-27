@@ -23,7 +23,6 @@ map("n", "<leader>cv", "\"+p", { desc ="Paste from system clipboard" })
 map({'n', 'i'}, "<C-s>", "<cmd>write<CR>", { desc ="save buffer" })
 map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
-map("t", "<Esc>", "<C-\\><C-n>", { desc = "Escapte Terminal mode" })
 map('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
 map('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
 map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
@@ -33,7 +32,16 @@ map('n', 'gp', 'gT', { noremap = true, silent = true })
 map('n', '<M-j>', 'ddjP', { noremap = true, silent = true })
 map('n', '<M-k>', 'ddkP', { noremap = true, silent = true })
 map('v', '<M-j>', 'djP', { noremap = true, silent = true })
+map("t", "<Esc>", "<Esc>", {nowait = true, desc = "Pass Esc to CLI" })
+map("t", "<C-q>", "<C-\\><C-n>", { desc = "Escapte Terminal mode" })
 map('v', '<M-k>', 'dkP', { noremap = true, silent = true })
+
+vim.filetype.add({
+  extension = {
+    launch = 'xml',
+  },
+})
+
 function OpenTerminalInSplit()
   vim.cmd('belowright split')
   vim.cmd('terminal')
