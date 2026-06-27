@@ -1,5 +1,11 @@
 #!/bin/bash
-curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y xclip luajit clangd clang-format python3-pip python3-venv ripgrep nodejs npm
-pip3 install --user pyright
-sudo npm install -g @johnnymorganz/stylua-bin
+# Download and install nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.5/install.sh | bash
+# in lieu of restarting the shell
+\. "$HOME/.nvm/nvm.sh"
+# Download and install Node.js:
+nvm install 24
+
+sudo apt install -y xclip luajit python3-pip python3-venv ripgrep liblua5.1-0-dev
+#pip3 install --user pyright
+
